@@ -1,11 +1,19 @@
 version: "3.9"
-   
+
+secrets:
+  omdb_key:
+    file: ./secrets/omdb_key
+
 services:
   web:
     build: .
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/code
+    secrets:
+      - omdb_key
+    environment:
+      - OMDB_KEY_FILE=/run/secrets/omdb_key
     ports:
       - "8000:8000"
 

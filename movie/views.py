@@ -11,6 +11,9 @@ omdb.set_default('apikey', getsecret('OMDB_KEY_FILE'))
 # Create your views here.
 
 def search(request):
-    title = request.GET['q']
-    print(omdb.search_movie(title))
-    return render(request, 'movie/search.html', {'query': title})
+    query = request.GET['q']
+    return render(request, 'movie/search.html', {
+        'query': query,
+        'title': omdb.title(query, tomatoes=True),
+        'search': omdb.search_movie(query)
+    })

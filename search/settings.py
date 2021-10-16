@@ -25,12 +25,13 @@ SECRET_KEY = 'django-insecure-k6gte1f8r9v2ot@$579h)ho7$=++^f)@flpkq&!w1*i)%q4e(8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'movie',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

@@ -1,0 +1,17 @@
+{% extends 'movie/layout.html' %}
+
+{% block body %}
+
+<form action={% url 'movie:search' %} method="get">
+    <input id="q" type="text" name="q" value="{{ query }}">
+    <input type="submit">
+</form>
+
+<div class="d-grid gap-2">
+    <a class="btn" style="color: white; background-color: red" href="https://www.rottentomatoes.com/search?search={{ query }}">Rotten Tomatoes</a>
+    <a class="btn" style="color: black; background-color: #F6C800" href="https://www.imdb.com/find?q={{ query }}">IMDb</a>
+    <a class="btn" style="color: white; background-color: #111" href="https://www.metacritic.com/search/movie/{{ query }}/results">metacritic</a>
+    <a class="btn" style="color: #fbc500; background-color: #060d17" href="https://www.justwatch.com/ca/search?q={{ query }}">JustWatch</a>
+
+</div>
+{% endblock %}

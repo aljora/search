@@ -10,12 +10,20 @@
 <div class="row">
 	<img class="col-3" src="{{ title.poster }}">
 </div>
+{% if title.tomato_url %}
 <div class="btn-group d-flex gap-2 mt-2">
 	<a class="btn" style="color: white; background-color: red" href="{{ title.tomato_url }}">Rotten Tomatoes</a>
+{% else %}
+<div class="row mt-2">
+{% endif %}
 	<a class="btn" style="color: white; background-color: red" href="https://www.rottentomatoes.com/search?search={{ query }}">Rotten Tomatoes Search</a>
 </div>
+{% if title.imdb_id %}
 <div class="btn-group d-flex gap-2 mt-2">
 	<a class="btn" style="color: black; background-color: #F6C800" href="https://www.imdb.com/title/{{ title.imdb_id }}">IMDb</a>
+{% else %}
+<div class="row mt-2">
+{% endif %}
 	<a class="btn" style="color: black; background-color: #F6C800" href="https://www.imdb.com/find?q={{ query }}">IMDb Search</a>
 </div>
 <div class="row mt-2">
@@ -24,8 +32,12 @@
 <div class="row mt-2">
 	<a class="btn" style="color: #fbc500; background-color: #060d17" href="https://www.justwatch.com/ca/search?q={{ query }}">JustWatch</a>
 </div>
+{% if title.imdb_id %}
 <div class="btn-group d-flex gap-2 mt-2">
 
+{% else %}
+<div class="row mt-2">
+{% endif %}
 
 </div>
 {% endblock %}

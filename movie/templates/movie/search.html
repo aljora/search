@@ -3,7 +3,7 @@
 {% block body %}
 
 <form action={% url 'movie:search' %} method="get">
-    <input id="q" type="text" name="q" value="{{ query }}">
+    <input id="q" type="text" name="q" value="{{ query }}" autofocus>
     <input type="submit">
 </form>
 

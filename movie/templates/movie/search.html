@@ -10,7 +10,7 @@
 <div class="row">
 	<img class="col-3" src="{{ title.poster }}">
 </div>
-{% if title.tomato_url %}
+{% if title.tomato_url and title.tomato_url != "N/A" %}
 <div class="btn-group d-flex gap-2 mt-2">
 	<a class="btn" style="color: white; background-color: red" href="{{ title.tomato_url }}">Rotten Tomatoes</a>
 {% else %}

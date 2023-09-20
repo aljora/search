@@ -12,7 +12,10 @@
 </div>
 {% if title.tomato_url and title.tomato_url != "N/A" %}
 <div class="btn-group d-flex gap-2 mt-2">
-	<a class="btn" style="color: white; background-color: red" href="{{ title.tomato_url }}">Rotten Tomatoes</a>
+	<a class="btn" style="color: white; background-color: red" href="{{ title.tomato_url }}">
+		{{ title.ratings.1.source }}
+		(Score {{ title.ratings.1.value }})
+	</a>
 {% else %}
 <div class="row mt-2">
 {% endif %}
@@ -20,14 +23,22 @@
 </div>
 {% if title.imdb_id %}
 <div class="btn-group d-flex gap-2 mt-2">
-	<a class="btn" style="color: black; background-color: #F6C800" href="https://www.imdb.com/title/{{ title.imdb_id }}">IMDb</a>
+	<a class="btn" style="color: black; background-color: #F6C800" href="https://www.imdb.com/title/{{ title.imdb_id }}">
+		IMDb
+		(Score {{ title.imdb_rating }})
+	</a>
 {% else %}
 <div class="row mt-2">
 {% endif %}
 	<a class="btn" style="color: black; background-color: #F6C800" href="https://www.imdb.com/find?q={{ query }}">IMDb Search</a>
 </div>
 <div class="row mt-2">
-	<a class="btn" style="color: white; background-color: #111" href="https://www.metacritic.com/search/movie/{{ query }}/results">metacritic</a>
+	<a class="btn" style="color: white; background-color: #111" href="https://www.metacritic.com/search/{{ query }}/?category=2">
+		metacritic
+		{% if title.metascore %}
+		(Score {{ title.metascore }})
+		{% endif %}
+	</a>
 </div>
 <div class="row mt-2">
 	<a class="btn" style="color: #fbc500; background-color: #060d17" href="https://www.justwatch.com/ca/search?q={{ query }}">JustWatch</a>

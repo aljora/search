@@ -6,3 +6,6 @@ data/
 
 # Secrets
 secrets/
+
+# Custom
+*/templates/*/custom*

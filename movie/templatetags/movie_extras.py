@@ -2,6 +2,10 @@ from django import template
 
 register = template.Library()
 
-@register.simple_tag()
-def include_fallback(*template_choices):
-    return template.loader.select_template(template_choices).render()
+@register.filter
+def template_exists(template_name):
+    try:
+        template.loader.get_template(template_name)
+        return True
+    except template.TemplateDoesNotExist:
+        return False

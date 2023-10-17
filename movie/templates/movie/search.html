@@ -44,5 +44,7 @@
 <div class="row mt-2">
 	<a class="btn" style="color: #fbc500; background-color: #060d17" href="https://www.justwatch.com/ca/search?q={{ query }}">JustWatch</a>
 </div>
-{% include_fallback 'movie/custom.html' 'movie/blank.html' %}
+{% if 'movie/custom.html'|template_exists %}
+	{% include 'movie/custom.html' %}
+{% endif %}
 {% endblock %}

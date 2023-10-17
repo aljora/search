@@ -1,4 +1,5 @@
 {% extends 'movie/layout.html' %}
+{% load movie_extras %}
 
 {% block body %}
 
@@ -43,5 +44,5 @@
 <div class="row mt-2">
 	<a class="btn" style="color: #fbc500; background-color: #060d17" href="https://www.justwatch.com/ca/search?q={{ query }}">JustWatch</a>
 </div>
-{% include 'movie/custom.html' %}
+{% include_fallback 'movie/custom.html' 'movie/blank.html' %}
 {% endblock %}

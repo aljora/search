@@ -1,0 +1,10 @@
+{% extends 'search/layout.html' %}
+
+{% block body %}
+
+<form action={% url 'search' %} method="get">
+    <input id="q" type="text" name="q" autofocus>
+    <input type="submit">
+</form>
+
+{% endblock %}

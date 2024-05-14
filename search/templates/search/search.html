@@ -1,0 +1,54 @@
+{% extends 'search/layout.html' %}
+{% load movie_extras %}
+
+{% block body %}
+
+<form action={% url 'search' %} method="get">
+    <input id="q" type="text" name="q" value="{{ query }}" autofocus>
+    <input type="submit">
+</form>
+
+<div class="row">
+	<img class="col-3" src="{{ title.poster }}">
+</div>
+{% if title.tomato_url and title.tomato_url != "N/A" %}
+<div class="btn-group d-flex gap-2 mt-2">
+	<a class="btn" style="color: white; background-color: red" href="{{ title.tomato_url }}">
+		{{ title.ratings.1.source }}
+		(Score {{ title.ratings.1.value }})
+	</a>
+{% else %}
+<div class="row mt-2">
+{% endif %}
+	<a class="btn" style="color: white; background-color: red" href="https://www.rottentomatoes.com/search?search={{ query }}">Rotten Tomatoes Search</a>
+</div>
+{% if title.imdb_id %}
+<div class="btn-group d-flex gap-2 mt-2">
+	<a class="btn" style="color: black; background-color: #F6C800" href="https://www.imdb.com/title/{{ title.imdb_id }}">
+		IMDb
+		(Score {{ title.imdb_rating }})
+	</a>
+{% else %}
+<div class="row mt-2">
+{% endif %}
+	<a class="btn" style="color: black; background-color: #F6C800" href="https://www.imdb.com/find?q={{ query }}">IMDb Search</a>
+</div>
+<div class="row mt-2">
+{% if title.type == "series" %}
+	<a class="btn" style="color: white; background-color: #111" href="https://www.metacritic.com/search/{{ query }}/?category=1">
+{% else %}
+	<a class="btn" style="color: white; background-color: #111" href="https://www.metacritic.com/search/{{ query }}/?category=2">
+{% endif %}
+		metacritic
+		{% if title.metascore %}
+		(Score {{ title.metascore }})
+		{% endif %}
+	</a>
+</div>
+<div class="row mt-2">
+	<a class="btn" style="color: #fbc500; background-color: #060d17" href="https://www.justwatch.com/ca/search?content_type=movie&q={{ query }}">JustWatch</a>
+</div>
+{% if 'search/custom.html'|template_exists %}
+	{% include 'search/custom.html' %}
+{% endif %}
+{% endblock %}

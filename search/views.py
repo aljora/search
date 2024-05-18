@@ -25,9 +25,9 @@ def search(request):
                     'query': query,
                     'title': title,
                 })
-        except KeyError:
-            return render(request, 'search/search.html', {
-                'query': query,
-                'title': title,
-            })
+    except KeyError:
+        return render(request, 'search/search.html', {
+            'query': query,
+            'title': title,
+        })
 

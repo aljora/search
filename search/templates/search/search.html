@@ -48,6 +48,15 @@
 <div class="row mt-2">
 	<a class="btn" style="color: #fbc500; background-color: #060d17" href="https://www.justwatch.com/ca/search?content_type=movie&q={{ query }}">JustWatch</a>
 </div>
+<div class="row mt-2">
+{% if title.type == "series" %}
+	<a class="btn" style="color: #000000; background-color: #FFFFFF" href="https://en.wikipedia.org/w/index.php?search={{ query }} articletopic:television">Wikipedia</a>
+{% elif title.type == "movie" %}
+	<a class="btn" style="color: #000000; background-color: #FFFFFF" href="https://en.wikipedia.org/w/index.php?search={{ query }} articletopic:films">Wikipedia</a>
+{% else %}
+	<a class="btn" style="color: #000000; background-color: #FFFFFF" href="https://en.wikipedia.org/w/index.php?search={{ query }} articletopic:films|television">Wikipedia</a>
+{% endif %}
+</div>
 {% if 'search/custom.html'|template_exists %}
 	{% include 'search/custom.html' %}
 {% endif %}
